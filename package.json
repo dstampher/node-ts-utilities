@@ -1,5 +1,5 @@
 {
-  "name": "node-ts-utils",
+  "name": "node-ts-utilities",
   "version": "1.0.0",
   "devDependencies": {
     "@types/dockerode": "^3.3.16",
