@@ -1,10 +1,11 @@
 {
   "name": "@coder1987/node-ts-utils",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "exports": {
     ".": "./src/index.ts",
     "./docker": "./src/dockerUtils.ts",
-    "./http": "./src/httpUtils.ts"
+    "./http": "./src/httpUtils.ts",
+    "./array": "./src/arrayUtils.ts"
   },
   "devDependencies": {
     "@types/dockerode": "^3.3.16",
