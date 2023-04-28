@@ -81,7 +81,7 @@ export async function getPortMap(container: Docker.Container) {
 }
 
 export type PortMap = {
-  containerPort: string;
-  hostPort: string;
+  containerPort: number;
+  hostPort: number;
   inUse: boolean;
 };
