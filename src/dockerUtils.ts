@@ -72,8 +72,8 @@ export async function getPortMap(container: Docker.Container) {
     let containerPort = key.split("/")[0];
     let hostPort = ports[key][0].HostPort;
     portMap.push({
-      containerPort: containerPort,
-      hostPort: hostPort,
+      containerPort: parseInt(containerPort),
+      hostPort: parseInt(hostPort),
       inUse: false,
     });
   }
