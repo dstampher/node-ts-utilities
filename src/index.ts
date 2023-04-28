@@ -1,2 +1,2 @@
-export * as NetUtils from "./httpUtils";
-export * as DockerUtils from "./dockerUtils";
+export * as httpUtils from "./httpUtils";
+export * as dockerUtils from "./dockerUtils";
