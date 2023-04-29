@@ -26,7 +26,7 @@ export async function execShellCommand(
   }
 }
 
-async function checkIfImageExists(imageName: string) {
+export async function checkIfImageExists(imageName: string) {
   try {
     const image = docker.getImage(imageName);
     await image.inspect();
@@ -36,22 +36,6 @@ async function checkIfImageExists(imageName: string) {
       return false;
     }
     throw error;
-  }
-}
-
-export async function buildImageIfNotExists(imageName: string) {
-  const imageExists = await checkIfImageExists(imageName);
-  if (!imageExists) {
-    let stream = await docker.buildImage({
-      context: "./",
-      src: ["Dockerfile", "./data"],
-    });
-    //Wait until image is built.
-    await new Promise((resolve, reject) => {
-      docker.modem.followProgress(stream, (err, res) => {
-        err ? reject(err) : resolve(res);
-      });
-    });
   }
 }
 
