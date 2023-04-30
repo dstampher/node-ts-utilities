@@ -10,15 +10,17 @@ export async function testProxy(
 ) {
   if (!expectedValue && !disallowedValue)
     throw new Error("Must provide expectedValue or disallowedValue");
-  let proxyAgent = new HttpsProxyAgent(proxy);
-  let res = await axios.get<string>(url, {
-    httpsAgent: proxyAgent,
-    responseType: "text",
-  });
-  console.log(res.data);
-  //Check for expected or disallowed value.
   let result: boolean = false;
-  if (expectedValue) result = res.data.includes(expectedValue);
-  if (disallowedValue) result = !res.data.includes(disallowedValue);
+  let proxyAgent = new HttpsProxyAgent(proxy);
+  try {
+    let res = await axios.get<string>(url, {
+      httpsAgent: proxyAgent,
+      responseType: "text",
+    });
+    if (expectedValue) result = res.data.includes(expectedValue);
+    if (disallowedValue) result = !res.data.includes(disallowedValue);
+  } catch (error) {
+    console.log(error);
+  }
   return result;
 }
