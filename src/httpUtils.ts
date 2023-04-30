@@ -15,6 +15,7 @@ export async function testProxy(
   try {
     let res = await axios.get<string>(url, {
       httpsAgent: proxyAgent,
+      httpAgent: proxyAgent,
       responseType: "text",
     });
     if (expectedValue) result = res.data.includes(expectedValue);
